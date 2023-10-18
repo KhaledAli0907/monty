@@ -9,7 +9,7 @@ void _open(char *fileName)
 	FILE *pointer = fopen(fileName, "r");
 
 	if (fileName == NULL || pointer == NULL)
-		error(fileName, 2);
+		error(2, fileName);
 
 	read_lines(pointer);
 	fclose(pointer);
@@ -27,7 +27,7 @@ void read_lines(FILE *pointer)
 
 	size_t len = 0;
 
-	for (line_n = 1; getline(&buffer, &len, 0) != -1; line_n++)
+	for (line_n = 1; getline(&buffer, &len, pointer) != -1; line_n++)
 		format = parse_line(buffer, line_n, format);
 	free(buffer);
 }
@@ -48,7 +48,7 @@ int parse_line(char *buffer, int line_n, int format)
 	const char *delimeter = "\n ";
 
 	if (buffer == NULL)
-		err(4);
+		error(4);
 
 	operator = strtok(buffer, delimeter);
 	if (operator == NULL)
@@ -80,7 +80,7 @@ void _find(char *operator, char *value, int ln, int format)
 	instruction_t func_list[] = {
 		{"push", add_node_stack},
 		{"pall", print_stack},
-		{"pint", print_stack},
+		{"pint", print_last},
 		{"pop", pop_last},
 		{"nop", nop},
 		{"swap", swap_nodes},
@@ -108,7 +108,7 @@ void _find(char *operator, char *value, int ln, int format)
 		}
 	}
 	if (flag == 1)
-		err(3, ln, operator);
+		error(3, ln, operator);
 }
 
 /**
@@ -135,11 +135,11 @@ void call_fun(operator_func func, char *op, char *val, int ln, int format)
 			flag = -1;
 		}
 		if (val == NULL)
-			err(5, ln);
+			error(5, ln);
 		for (i = 0; val[i] != '\0'; i++)
 		{
 			if (isdigit(val[i]) == 0)
-				err(5, ln);
+				error(5, ln);
 		}
 		node = create_node(atoi(val) * flag);
 		if (format == 0)

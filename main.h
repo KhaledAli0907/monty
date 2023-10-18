@@ -46,24 +46,25 @@ extern stack_t *head;
 typedef void (*operator_func)(stack_t **, unsigned int);
 
 /* Erros handlers */
-void error(int err_code, ...);
+void error(int error_code, ...);
 void more_errors(int err_code, ...);
 void string_error(int err_code, ...);
 
 /*file operations*/
-void open_file(char *file_name);
+void _open(char *file_name);
 int parse_line(char *buffer, int line_number, int format);
 void read_lines(FILE *);
 int len_chars(FILE *);
 void _find(char *, char *, int, int);
 
 /*stack functions*/
-void add_node_stack(stack_t **node);
-void pop_last(stack_t **last, int n);
-void print_last(stack_t **last, int n);
-void print_stack(stack_t **last);
+void add_node_stack(stack_t **node, unsigned int n);
+void pop_last(stack_t **last, unsigned int n);
+void print_last(stack_t **last, unsigned int n);
+void print_stack(stack_t **last, unsigned int n);
 void swap_nodes(stack_t **last, unsigned int n);
 void nop(stack_t **stack, unsigned int line_number);
+void call_fun(operator_func func, char *op, char *val, int ln, int format);
 
 /* stack calculation functions */
 void add_two_nodes(stack_t **, unsigned int);

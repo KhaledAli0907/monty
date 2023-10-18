@@ -4,15 +4,15 @@
  * add_node_stack - add not the stack
  *
  * @node: pointer to the new node
- *
+ * @n: line number
  * Return: pointer to the new node
  */
-void add_node_stack(stack_t **node)
+void add_node_stack(stack_t **node,  __attribute__((unused))unsigned int n)
 {
 	stack_t *temp = NULL;
 
 	if (node == NULL || *node == NULL)
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 
 	if (head == NULL)
 	{
@@ -31,7 +31,7 @@ void add_node_stack(stack_t **node)
  * @last: pointer to last node added to the stack
  * @n: integer represinting opcode
  */
-void pop_last(stack_t **last, int n)
+void pop_last(stack_t **last, unsigned int n)
 {
 	stack_t *temp = NULL;
 
@@ -51,7 +51,7 @@ void pop_last(stack_t **last, int n)
  * @last: double pointer to the top node of the stack
  * @n: line number
  */
-void print_last(stack_t **last, int n)
+void print_last(stack_t **last, unsigned int n)
 {
 	if (*last == NULL || last == NULL)
 		more_errors(6, n);
@@ -61,14 +61,17 @@ void print_last(stack_t **last, int n)
 /**
  * print_stack - prints the whole stack
  *
- * @last: double pointer to the last elemnt added to the stack
+ * @last: double pointer to the last /
+ * elemnt added to the stack
+ * @n: line number
  */
-void print_stack(stack_t **last)
+void print_stack(stack_t **last, unsigned int n)
 {
 	stack_t *temp = NULL;
 
+	(void) n;
 	if (last == NULL)
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 
 	temp = *last;
 	while (temp != NULL)

@@ -1,5 +1,5 @@
 #include "main.h"
-
+stack_t *head = NULL;
 
 /**
 * main - entry point
@@ -10,8 +10,6 @@
 
 int main(int argc, char *argv[])
 {
-	stack_t *head = NULL;
-
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");

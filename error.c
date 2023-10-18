@@ -2,7 +2,7 @@
 
 /**
  * error - Prints appropiate error messages determined by their error code.
- * @err_code: The error codes are the following:
+ * @error_code: The error codes are the following:
  * (1) => The user does not give any file or more than one file to the program.
  * (2) => The file provided is not a file that can be opened or read.
  * (3) => The file provided contains an invalid instruction.
@@ -12,32 +12,32 @@
  * (7) => When the stack it empty for pop.
  * (8) => When stack is too short for operation.
  */
-void error(int err_code, ...)
+void error(int error_code, ...)
 {
-	va_list arg;
-	char *operator;
-	int num;
+	va_list ag;
+	char *op;
+	int l_num;
 
-	va_start(arg, err_code);
-	switch (err_code)
+	va_start(ag, error_code);
+	switch (error_code)
 	{
 		case 1:
-			fprintf(stderr, "Usage: monty file\n");
+			fprintf(stderr, "USAGE: monty file\n");
 			break;
 		case 2:
-			fprintf(stderr, "Error: can't open file %s\n",
-					va_arg(arg, char *));
+			fprintf(stderr, "Error: Can't open file %s\n",
+				va_arg(ag, char *));
 			break;
 		case 3:
-			num = va_arg(arg, int);
-			operator = va_arg(arg, char *);
-			fprintf(stderr, "L%d: unknown instruction %s\n");
+			l_num = va_arg(ag, int);
+			op = va_arg(ag, char *);
+			fprintf(stderr, "L%d: unknown instruction %s\n", l_num, op);
 			break;
 		case 4:
-			fprintf(stderr, "Error: Malloc failed\n");
+			fprintf(stderr, "Error: malloc failed\n");
 			break;
 		case 5:
-			fprintf(stderr, "L%d: usage: push integer\n", va_arg(arg, int));
+			fprintf(stderr, "L%d: usage: push integer\n", va_arg(ag, int));
 			break;
 		default:
 			break;
@@ -45,6 +45,7 @@ void error(int err_code, ...)
 	free_nodes();
 	exit(EXIT_FAILURE);
 }
+
 
 /**
  * more_errors - handles errors.
