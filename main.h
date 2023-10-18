@@ -55,7 +55,7 @@ void open_file(char *file_name);
 int parse_line(char *buffer, int line_number, int format);
 void read_lines(FILE *);
 int len_chars(FILE *);
-void find_func(char *, char *, int, int);
+void _find(char *, char *, int, int);
 
 /*stack functions*/
 void add_node_stack(stack_t **node);
