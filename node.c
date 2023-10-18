@@ -1,4 +1,5 @@
-#include "main.h"
+#include "monty.h"
+
 
 /**
  * create_node - Creates a node.

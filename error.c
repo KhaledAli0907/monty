@@ -1,4 +1,4 @@
-#include "main.h"
+#include "monty.h"
 
 /**
  * error - Prints appropiate error messages determined by their error code.
