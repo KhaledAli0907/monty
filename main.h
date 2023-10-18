@@ -36,7 +36,7 @@ typedef struct stack_s
 */
 typedef struct instruction_s
 {
-	char *opcode;
+	char *operator;
 
 	void (*f)(stack_t **stack, unsigned int line_number);
 
@@ -63,6 +63,7 @@ void pop_last(stack_t **last, int n);
 void print_last(stack_t **last, int n);
 void print_stack(stack_t **last);
 void swap_nodes(stack_t **last, unsigned int n);
+void nop(stack_t **stack, unsigned int line_number);
 
 /* stack calculation functions */
 void add_two_nodes(stack_t **, unsigned int);
@@ -78,5 +79,6 @@ void rotl(stack_t **, unsigned int);
 stack_t *create_node(int n);
 void free_nodes(void);
 void add_to_queue(stack_t **, unsigned int);
+void rotr(stack_t **, unsigned int);
 
 #endif /*MAIN_H*/

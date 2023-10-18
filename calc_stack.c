@@ -105,5 +105,3 @@ void mod_two_nodes(stack_t **last, unsigned int n)
 	free((*last)->prev);
 	(*last)->prev = NULL;
 }
-
-

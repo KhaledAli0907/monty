@@ -53,7 +53,7 @@ int parse_line(char *buffer, int line_n, int format)
 	operator = strtok(buffer, delimeter);
 	if (operator == NULL)
 		return (format);
-	
+
 	value = strtok(NULL, delimeter);
 	if (strcmp(operator, "stack") == 0)
 		return (0);
@@ -78,17 +78,17 @@ void _find(char *operator, char *value, int ln, int format)
 	int flag;
 
 	instruction_t func_list[] = {
-		{"push", add_to_stack},
+		{"push", add_node_stack},
 		{"pall", print_stack},
-		{"pint", print_top},
-		{"pop", pop_top},
+		{"pint", print_stack},
+		{"pop", pop_last},
 		{"nop", nop},
 		{"swap", swap_nodes},
-		{"add", add_nodes},
-		{"sub", sub_nodes},
-		{"div", div_nodes},
-		{"mul", mul_nodes},
-		{"mod", mod_nodes},
+		{"add", add_two_nodes},
+		{"sub", sub_two_nodes},
+		{"div", div_two_nodes},
+		{"mul", mul_two_nodes},
+		{"mod", mod_two_nodes},
 		{"pchar", print_char},
 		{"pstr", print_str},
 		{"rotl", rotl},
